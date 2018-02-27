@@ -79,6 +79,9 @@ export class CardsComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Reverse the PIA creation card with an effect
+   */
   reversePIA() {
     const cardsToSwitchReverse = document.getElementById('cardsSwitch');
     cardsToSwitchReverse.classList.remove('flipped');
@@ -120,6 +123,9 @@ export class CardsComponent implements OnInit, OnDestroy {
     localStorage.setItem('sortOrder', this.sortOrder);
   }
 
+  /**
+   * Display PIAs as a list
+   */
   viewOnList() {
     this.viewStyle.view = 'list';
     localStorage.setItem('homepageDisplayMode', this.viewStyle.view);
@@ -127,6 +133,9 @@ export class CardsComponent implements OnInit, OnDestroy {
     this.refreshContent();
   }
 
+  /**
+   * Display PIAs as cards
+   */
   viewOnCard() {
     this.viewStyle.view = 'card';
     localStorage.setItem('homepageDisplayMode', this.viewStyle.view);
@@ -138,6 +147,9 @@ export class CardsComponent implements OnInit, OnDestroy {
     this.paramsSubscribe.unsubscribe();
   }
 
+  /**
+   * Refresh PIAs and current sort setup
+   */
   async refreshContent() {
     const pia = new Pia();
     const data: any = await pia.getAll();
@@ -149,6 +161,9 @@ export class CardsComponent implements OnInit, OnDestroy {
     }, 200);
   }
 
+  /**
+   * Sort PIAS according the the sort value and sort order
+   */
   private sortPia() {
     this._piaService.pias.sort((a, b) => {
       let firstValue = a[this.sortValue];

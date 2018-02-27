@@ -17,8 +17,7 @@ export class AttachmentItemComponent implements OnInit {
 
   constructor(private _modalsService: ModalsService, private _attachmentsService: AttachmentsService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   /**
    * Deletes an attachment with a given id.

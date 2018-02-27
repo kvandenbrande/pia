@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { Evaluation } from './evaluation.model';
 import { Answer } from 'app/entry/entry-content/questions/answer.model';
 
-import { EvaluationService } from './evaluations.service';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { GlobalEvaluationService } from 'app/services/global-evaluation.service';
 import { KnowledgeBaseService } from '../../knowledge-base/knowledge-base.service';
@@ -40,7 +39,6 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
   editorEvaluationComment: any;
 
   constructor(private el: ElementRef,
-              private _evaluationService: EvaluationService,
               public _globalEvaluationService: GlobalEvaluationService,
               private _ngZone: NgZone,
               private _knowledgeBaseService: KnowledgeBaseService,
@@ -145,7 +143,6 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
         this.evaluationForm.controls['gaugeY'].patchValue(0);
       }
 
-      // this._globalEvaluationService.checkForFinalValidation(this.pia, this.section, this.item);
     });
 
     if (this.item.questions) {
@@ -161,8 +158,6 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
         });
       });
     }
-    // this._evaluationService.setPia(this.pia); // Sometimes this._evaluationService.pia is empty
-    // this._evaluationService.isAllEvaluationValidated();
   }
 
   autoTextareaResize(event: any, textarea?: any) {
@@ -219,8 +214,6 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
       // Pass the evaluation to the parent component
       this.evaluationEvent.emit(this.evaluation);
       this._globalEvaluationService.validate();
-      // this._sidStatusService.setSidStatus(this._piaService, this.section, this.item);
-      // this._globalEvaluationService.checkForFinalValidation(this.pia, this.section, this.item);
     });
 
     // Displays content (action plan & comment fields).
@@ -252,7 +245,6 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
     this.evaluation.update().then(() => {
       this._ngZone.run(() => {
         this._globalEvaluationService.validate();
-        // this._globalEvaluationService.checkForFinalValidation(this.pia, this.section, this.item);
       });
     });
   }
@@ -282,7 +274,6 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
     this.evaluation.update().then(() => {
       this._ngZone.run(() => {
         this._globalEvaluationService.validate();
-        // this._globalEvaluationService.checkForFinalValidation(this.pia, this.section, this.item);
       });
     });
   }
@@ -335,7 +326,6 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
     }
     this.evaluation.update().then(() => {
       this._globalEvaluationService.validate();
-      // this._globalEvaluationService.checkForFinalValidation(this.pia, this.section, this.item);
     });
   }
 

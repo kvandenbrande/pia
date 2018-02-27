@@ -32,6 +32,9 @@ export class OverviewRisksComponent implements OnInit {
     });
   }
 
+  /**
+   * Init the risks overview
+   */
   private async initData() {
     await this._piaService.getPIA();
     const dataTags = [

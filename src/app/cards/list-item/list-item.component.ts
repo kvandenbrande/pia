@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Attachment } from 'app/entry/attachments/attachment.model';
+
 import { ModalsService } from 'app/modals/modals.service';
 import { PiaService } from 'app/entry/pia.service';
 
@@ -27,12 +28,20 @@ export class ListItemComponent implements OnInit {
     });
   }
 
+  /**
+   * Update the current PIA after focusing out a field
+   */
   onFocusOut(attribute: string, event: any) {
     const text = event.target.innerText;
-    this.pia[attribute] = text;
-    this.pia.update();
+    if (text.length > 0) {
+      this.pia[attribute] = text;
+      this.pia.update();
+    }
   }
 
+  /**
+   * Remove a PIA with its ID
+   */
   removePia(id: string) {
     localStorage.setItem('pia-id', id);
     this._modalsService.openModal('modal-remove-pia');

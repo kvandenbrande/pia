@@ -1,5 +1,6 @@
 import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { Renderer2 } from '@angular/core';
+
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

@@ -44,7 +44,6 @@ export class EntryComponent implements OnInit, OnDestroy, DoCheck {
     let itemId = parseInt(this.route.snapshot.params['item_id'], 10);
 
     this.data = await this._appDataService.getDataNav();
-    //this.getSectionAndItem(sectionId, itemId);
     this.route.params.subscribe(
       (params: Params) => {
         sectionId = parseInt(params['section_id'], 10);

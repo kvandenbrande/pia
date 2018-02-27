@@ -50,6 +50,9 @@ export class HelpComponent implements OnInit, OnDestroy {
     this.getSectionList();
   }
 
+  /**
+   * Go the cliked anchor (in the left menu)
+   */
   getAnchor(event, text) {
     event.preventDefault();
     this.activeElement = text;
@@ -60,6 +63,9 @@ export class HelpComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Generate the left menu to navigate in the help page
+   */
   getSectionList() {
     this.http.get(this.file).subscribe(data => {
       const fileMd = data.text().toString();
@@ -82,7 +88,7 @@ export class HelpComponent implements OnInit, OnDestroy {
     });
   }
 
-    /**
+  /**
    * Destroys help subscriber.
    */
   ngOnDestroy() {

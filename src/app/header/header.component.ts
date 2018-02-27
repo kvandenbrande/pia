@@ -94,6 +94,9 @@ export class HeaderComponent implements OnInit, DoCheck {
     }
   }
 
+  /**
+   * Import on demand the PIA example
+   */
   importPiaExample() {
     return new Promise((resolve, reject) => {
       const pia = new Pia();
@@ -107,7 +110,6 @@ export class HeaderComponent implements OnInit, DoCheck {
                 this._router.navigate(['entry', entry2.id, 'section', 1, 'item', 1]);
               });
             });
-
             resolve();
           });
         }

@@ -16,6 +16,9 @@ export class AttachmentsService {
   constructor(private _modalsService: ModalsService) {
   }
 
+  /**
+   * Get all the attachments
+   */
   async listAttachments() {
     return new Promise((resolve, reject) => {
       const attachment = new Attachment();
@@ -27,6 +30,9 @@ export class AttachmentsService {
     });
   }
 
+  /**
+   * Update the signed attachments array
+   */
   async updateSignedAttachmentsList() {
     return new Promise((resolve, reject) => {
       this.signedAttachments = [];
@@ -54,6 +60,9 @@ export class AttachmentsService {
     });
   }
 
+  /**
+   * Allow an user to upload an attachment
+   */
   upload(attachment_file: any) {
     const file = new Blob([attachment_file]);
     const reader = new FileReader();
@@ -81,6 +90,9 @@ export class AttachmentsService {
     }
   }
 
+  /**
+   * Allow an user to download an attachment
+   */
   downloadAttachment(id: number) {
     const attachment = new Attachment();
     attachment.pia_id = this.pia.id;

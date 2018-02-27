@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+
 import { Evaluation } from 'app/entry/entry-content/evaluations/evaluation.model';
 import { Measure } from 'app/entry/entry-content/measures/measure.model';
+
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
@@ -21,6 +23,10 @@ export class ActionPlanService {
   risksActionPlan33Ready = false;
   risksActionPlan34Ready = false;
 
+
+  /**
+   * List the action plan
+   */
   listActionPlan(translateService: TranslateService) {
     this.results = [];
     this.measures = [];

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { GlobalEvaluationService } from 'app/services/global-evaluation.service';
 import { Subject } from 'rxjs/Subject';
+
+import { GlobalEvaluationService } from 'app/services/global-evaluation.service';
 
 @Injectable()
 export class SidStatusService {
@@ -41,8 +42,8 @@ export class SidStatusService {
 
   setSidStatus(piaService: any, section: any, item: any) {
     const reference_to = section.id + '.' + item.id;
-    // We need to instanciate a new instance of GLobalEvaluationService
     const globalEvaluationService = new GlobalEvaluationService();
+
     globalEvaluationService.pia = piaService.pia;
     globalEvaluationService.section = section;
     globalEvaluationService.item = item;

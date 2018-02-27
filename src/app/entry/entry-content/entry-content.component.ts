@@ -9,7 +9,6 @@ import { AppDataService } from 'app/services/app-data.service';
 import { MeasureService } from 'app/entry/entry-content/measures/measures.service';
 import { ModalsService } from 'app/modals/modals.service';
 import { PiaService } from 'app/entry/pia.service';
-import { EvaluationService } from 'app/entry/entry-content/evaluations/evaluations.service';
 import { PaginationService } from './pagination.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SidStatusService } from 'app/services/sid-status.service';
@@ -37,7 +36,6 @@ export class EntryContentComponent implements OnInit, OnChanges {
               public _piaService: PiaService,
               public _sidStatusService: SidStatusService,
               public _globalEvaluationService: GlobalEvaluationService,
-              private _evaluationService: EvaluationService,
               public _paginationService: PaginationService,
               private _translateService: TranslateService,
               private _knowledgeBaseService: KnowledgeBaseService) { }
@@ -56,9 +54,6 @@ export class EntryContentComponent implements OnInit, OnChanges {
   async ngOnChanges() {
     this._paginationService.dataNav = await this._appDataService.getDataNav();
     await this._piaService.getPIA();
-
-    // this._evaluationService.setPia(this._piaService.pia);
-    // this._evaluationService.allowEvaluation();
 
     const sectionId = parseInt(this._activatedRoute.snapshot.params['section_id'], 10);
     const itemId = parseInt(this._activatedRoute.snapshot.params['item_id'], 10);
@@ -174,7 +169,6 @@ export class EntryContentComponent implements OnInit, OnChanges {
    */
   cancelAskForEvaluation() {
     this._globalEvaluationService.cancelForEvaluation();
-    // this._evaluationService.cancelForEvaluation(this._piaService, this._sidStatusService, this.section, this.item);
   }
 
   /**
@@ -183,9 +177,6 @@ export class EntryContentComponent implements OnInit, OnChanges {
    */
   cancelValidateEvaluation() {
     this._globalEvaluationService.cancelValidation();
-    // this._evaluationService.cancelValidation().then((valid: boolean) => {
-    //   this._sidStatusService.setSidStatus(this._piaService, this.section, this.item);
-    // });
   }
 
 }

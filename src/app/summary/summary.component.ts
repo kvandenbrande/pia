@@ -1,13 +1,14 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { PiaService } from 'app/entry/pia.service';
-import { AttachmentsService } from 'app/entry/attachments/attachments.service';
+
 import { Answer } from 'app/entry/entry-content/questions/answer.model';
 import { Measure } from 'app/entry/entry-content/measures/measure.model';
-import { Evaluation } from 'app/entry/entry-content/evaluations/evaluation.model';
-import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-plan.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { AppDataService } from 'app/services/app-data.service';
+import { Evaluation } from 'app/entry/entry-content/evaluations/evaluation.model';
 
+import { PiaService } from 'app/entry/pia.service';
+import { AttachmentsService } from 'app/entry/attachments/attachments.service';
+import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-plan.service';
+import { AppDataService } from 'app/services/app-data.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

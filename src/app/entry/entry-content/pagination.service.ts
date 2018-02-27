@@ -10,6 +10,9 @@ export class PaginationService {
 
   constructor() { }
 
+  /**
+   * Set the pagination according to the current section and item
+   */
   setPagination(sectionId: number, itemId: number) {
     this.previousLink = [];
     this.nextLink = [];

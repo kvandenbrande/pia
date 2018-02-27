@@ -55,7 +55,6 @@ export class CommentsComponent implements OnInit {
 
   }
 
-
   /**
    * Shows or hide the block which allows users to create a new comment.
    * @memberof CommentsComponent
@@ -77,7 +76,7 @@ export class CommentsComponent implements OnInit {
   }
 
   /**
-   * create a new comment
+   * Display a new comment
    * @memberof CommentsComponent
    */
   newCommentOnChange(event) {
@@ -88,6 +87,10 @@ export class CommentsComponent implements OnInit {
       this.newCommentDisplayer = false;
     }
   }
+
+  /**
+   * Create a new comment after clicking the adequate button
+   */
   newCommentClickBtn() {
     // Checks if the comment value exists.
     if (this.commentsForm.value.description && this.commentsForm.value.description.length > 0) {

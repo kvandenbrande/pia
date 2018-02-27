@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Measure } from './measure.model';
 
 import { ModalsService } from 'app/modals/modals.service';
-import { EvaluationService } from 'app/entry/entry-content/evaluations/evaluations.service';
 import { TranslateService } from '@ngx-translate/core';
 import { KnowledgeBaseService } from 'app/entry/knowledge-base/knowledge-base.service';
 import { GlobalEvaluationService } from 'app/services/global-evaluation.service';
@@ -20,9 +19,11 @@ export class MeasureService {
   constructor(private _translateService: TranslateService,
               private _modalsService: ModalsService,
               private _knowledgeBaseService: KnowledgeBaseService,
-              private _globalEvaluationService: GlobalEvaluationService,
-              private _evaluationService: EvaluationService) {}
+              private _globalEvaluationService: GlobalEvaluationService) {}
 
+  /**
+   * Get all measures for the current PIA
+   */
   async listMeasures(pia_id: number) {
     this.pia_id = pia_id;
     return new Promise((resolve, reject) => {
@@ -49,10 +50,7 @@ export class MeasureService {
     });
 
     /* Removing from DB */
-    measure.delete(measure_id).then(() => {
-      // this._evaluationService.remove(measure_id);
-      // this._evaluationService.allowEvaluation();
-    });
+    measure.delete(measure_id);
 
     /* Removing the measure from the view */
     const measureToRemove = document.querySelector('.pia-measureBlock[data-id="' + measure_id + '"]');
@@ -87,7 +85,6 @@ export class MeasureService {
       newMeasureRecord.placeholder = 'measures.default_placeholder';
     }
     newMeasureRecord.create().then((entry: number) => {
-      // this._evaluationService.allowEvaluation();
       this._globalEvaluationService.validate();
       newMeasureRecord.id = entry;
       this.measures.unshift(newMeasureRecord);

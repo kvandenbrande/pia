@@ -4,7 +4,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { PiaService } from 'app/entry/pia.service';
 import { ModalsService } from 'app/modals/modals.service';
 import { AttachmentsService } from 'app/entry/attachments/attachments.service';
-import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-plan.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -22,7 +21,6 @@ export class ValidatePIAComponent implements OnInit {
   constructor(private el: ElementRef,
               private _modalsService: ModalsService,
               public _attachmentsService: AttachmentsService,
-              private _actionPlanService: ActionPlanService,
               private _translateService: TranslateService,
               public _piaService: PiaService ) {
   }
@@ -39,11 +37,7 @@ export class ValidatePIAComponent implements OnInit {
       this.validateForm.controls['validateStatus2'].patchValue(this._piaService.pia.status > 1);
       this.validateForm.controls['validateStatus3'].patchValue(this._piaService.pia.status > 1);
       this.validateForm.controls['validateStatus4'].patchValue(this._piaService.pia.status > 1);
-
-      /* this._attachmentsService.getSignedAttachmentsList(); */
       this._attachmentsService.updateSignedAttachmentsList();
-
-      this._actionPlanService.listActionPlan(this._translateService);
     });
   }
 

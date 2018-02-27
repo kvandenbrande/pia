@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Http } from '@angular/http';
 
-import { AppDataService } from 'app/services/app-data.service';
 import { Pia } from './pia.model';
 import { Evaluation } from 'app/entry/entry-content/evaluations/evaluation.model';
 import { Answer } from 'app/entry/entry-content/questions/answer.model';
@@ -10,6 +9,7 @@ import { Measure } from 'app/entry/entry-content/measures/measure.model';
 import { Comment } from 'app/entry/entry-content/comments/comment.model';
 import { Attachment } from 'app/entry/attachments/attachment.model';
 
+import { AppDataService } from 'app/services/app-data.service';
 import { ModalsService } from 'app/modals/modals.service';
 import { EvaluationService } from 'app/entry/entry-content/evaluations/evaluations.service';
 import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-plan.service';
@@ -39,7 +39,6 @@ export class PiaService {
     return new Promise((resolve, reject) => {
       const piaId = parseInt(this.route.snapshot.params['id'], 10);
       this.pia.get(piaId).then(() => {
-        // this._evaluationService.setPia(this.pia);
         resolve();
       });
     });
@@ -119,8 +118,6 @@ export class PiaService {
       evaluation.pia_id = id;
       const comment = new Comment();
       comment.pia_id = id;
-      // const attachment = new Attachment();
-      // attachment.pia_id = id;
       pia.get(id).then(() => {
         const data = {
           pia: pia,
@@ -137,10 +134,7 @@ export class PiaService {
               data['evaluations'] = evaluations;
               comment.findAll().then((comments) => {
                 data['comments'] = comments;
-                // attachment.findAll().then((attachments) => {
-                  // data['attachments'] = attachments;
-                  resolve(data);
-                // });
+                resolve(data);
               });
             });
           });
@@ -197,6 +191,7 @@ export class PiaService {
 
     pia.create().then((pia_id: number) => {
       pia.id = pia_id;
+
       // Create answers
       data.answers.forEach(answer => {
         const answerModel = new Answer();
@@ -213,6 +208,7 @@ export class PiaService {
       if (data.measures.length > 0) {
         let count = 0;
         const oldIdToNewId = [];
+
         // Create measures
         data.measures.forEach(measure => {
           const measureModel = new Measure();

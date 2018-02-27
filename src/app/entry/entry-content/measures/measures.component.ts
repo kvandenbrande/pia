@@ -1,10 +1,11 @@
 import { Component, Input, ElementRef, Renderer2, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ModalsService } from 'app/modals/modals.service';
+
 import { Measure } from './measure.model';
 import { Answer } from 'app/entry/entry-content/questions/answer.model';
-import { EvaluationService } from 'app/entry/entry-content/evaluations/evaluations.service';
 import { Evaluation } from 'app/entry/entry-content/evaluations/evaluation.model';
+
+import { ModalsService } from 'app/modals/modals.service';
 import { KnowledgeBaseService } from 'app/entry/knowledge-base/knowledge-base.service';
 import { GlobalEvaluationService } from 'app/services/global-evaluation.service';
 
@@ -30,7 +31,6 @@ export class MeasuresComponent implements OnInit, OnDestroy {
     public _globalEvaluationService: GlobalEvaluationService,
     private el: ElementRef,
     private _modalsService: ModalsService,
-    private _evaluationService: EvaluationService,
     private _knowledgeBaseService: KnowledgeBaseService,
     private _ngZone: NgZone,
     private renderer: Renderer2) { }
@@ -114,7 +114,6 @@ export class MeasuresComponent implements OnInit, OnDestroy {
     const previousTitle = this.measureModel.title;
     this.measureModel.title = userText;
     this.measureModel.update().then(() => {
-      // this._evaluationService.allowEvaluation();
       if (previousTitle !== this.measureModel.title) {
         this._knowledgeBaseService.removeItemIfPresent(this.measureModel.title, previousTitle);
       }
@@ -189,7 +188,6 @@ export class MeasuresComponent implements OnInit, OnDestroy {
     this.measureModel.content = userText;
     this.measureModel.update().then(() => {
       this._ngZone.run(() => {
-        // this._evaluationService.allowEvaluation();
         this._globalEvaluationService.validate();
       });
     });

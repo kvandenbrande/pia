@@ -1,13 +1,14 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { Evaluation } from 'app/entry/entry-content/evaluations/evaluation.model';
-import { EvaluationService } from 'app/entry/entry-content/evaluations/evaluations.service';
-import { AppDataService } from 'app/services/app-data.service';
-import { SidStatusService } from 'app/services/sid-status.service';
-import { Measure } from 'app/entry/entry-content/measures/measure.model';
-import { Answer } from 'app/entry/entry-content/questions/answer.model';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { Evaluation } from 'app/entry/entry-content/evaluations/evaluation.model';
+import { Measure } from 'app/entry/entry-content/measures/measure.model';
+import { Answer } from 'app/entry/entry-content/questions/answer.model';
+
+import { EvaluationService } from 'app/entry/entry-content/evaluations/evaluations.service';
+import { AppDataService } from 'app/services/app-data.service';
+import { SidStatusService } from 'app/services/sid-status.service';
 import { PiaService } from 'app/entry/pia.service';
 import { GlobalEvaluationService } from 'app/services/global-evaluation.service';
 

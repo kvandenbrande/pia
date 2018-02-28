@@ -105,12 +105,20 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     const gaugeValue = parseInt(this.questionForm.value.gauge, 10);
     if (this.answer.id) {
       this.answer.data = { text: this.answer.data.text, gauge: gaugeValue, list: this.answer.data.list };
-      this.answer.update();
+      this.answer.update().then(() => {
+        this._ngZone.run(() => {
+          this._globalEvaluationService.validate();
+        });
+      });
     } else {
       this.answer.pia_id = this.pia.id;
       this.answer.reference_to = this.question.id;
       this.answer.data = { text: null, gauge: gaugeValue, list: [] };
-      this.answer.create();
+      this.answer.create().then(() => {
+        this._ngZone.run(() => {
+          this._globalEvaluationService.validate();
+        });
+      });
     }
   }
 
@@ -142,7 +150,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       if (this.questionForm.value.text && this.questionForm.value.text.length > 0) {
         this.answer.pia_id = this.pia.id;
         this.answer.reference_to = this.question.id;
-        this.answer.data = { text: this.questionForm.value.text, gauge: 0, list: [] };
+        let gaugeValueForCurrentQuestion;
+        this.question.answer_type === 'gauge' ? gaugeValueForCurrentQuestion = 0 : gaugeValueForCurrentQuestion = null;
+        this.answer.data = { text: this.questionForm.value.text, gauge: gaugeValueForCurrentQuestion, list: [] };
         this.answer.create().then(() => {
           this._ngZone.run(() => {
             this._globalEvaluationService.validate();

@@ -926,19 +926,24 @@
     "remove_attachment": {
       "content": "<span class='strong'>Uwaga</span><br>Czy na pewno chcą Państwo<br>usunąć ten załącznik ?",
       "keep": "Zachowanie",
-      "remove": "Usunięcie"
+      "remove": "Usunięcie",
+      "comment": "TO BE TRANSLATED - Comment"
     }
   },
   "summary": {
     "previous_page": "Powrót do poprzedniej strony",
     "print": "Drukowanie",
+    "download_risks_overview": "TO BE TRANSLATED - Save risks overview as an image",
+    "download_risks_cartography": "TO BE TRANSLATED - Save risk mapping as an image",
     "display_filters": {
       "title": "TO BE TRANSLATED - Filters",
       "main_content": "TO BE TRANSLATED - Display \"PIA information\"",
       "context_content": "TO BE TRANSLATED - Display \"Context\"",
       "principles_content": "TO BE TRANSLATED - Display \"Fundamental principles\"",
       "risks_content": "TO BE TRANSLATED - Display \"Risks\"",
-      "action_plan_content": "TO BE TRANSLATED - Display action plan"
+      "action_plan_content": "TO BE TRANSLATED - Display action plan",
+      "risks_overview_content": "TO BE TRANSLATED - Display risks overview",
+      "risks_cartography_content": "TO BE TRANSLATED - Display risk mapping"
     },
     "title": "Informacje o PIA",
     "pia_name": "Nazwa PIA",
@@ -977,7 +982,9 @@
       "measures": "Środki istniejące lub przewidziane",
       "risks": "Ryzyka",
       "no_action_plan": "Brak zarejestrowanego planu działania."
-    }
+    },
+    "risks_overview_title": "TO BE TRANSLATED - Risks overview",
+    "risks_cartography_title": "TO BE TRANSLATED - Risk mapping"
   },
   "errors": {
     "title": "Brak strony.",
